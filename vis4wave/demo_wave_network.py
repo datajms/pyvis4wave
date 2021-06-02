@@ -16,7 +16,7 @@ def build_demo_network():
 
     :return: a WaveNetwork object
     """
-    g = WaveNetwork(height="600px", width="600px")  # It has the same syntax as in pyvis
+    g = WaveNetwork(height="300px", width="500px")  # It has the same syntax as in pyvis
     g.add_node(0, label="id: 0")
     g.add_node(1, label="id: 1")
     g.add_edge(0, 1, label="from 0 to 1")
@@ -35,12 +35,12 @@ async def serve(q: Q):
         q.user.event_catcher = ui_vis4wave.get_event_catcher()
 
         q.page["myvis"] = ui_vis4wave.get_card(
-            box="1 1 6 8",
+            box="1 1 4 4",
             title="Try to click, double-click, hover, add or delete edges and nodes",
         )
 
         q.page["details"] = ui.markdown_card(
-            box="1 9 6 2",
+            box="1 5 4 2",
             title="",
             content="Default value ",
         )
@@ -50,9 +50,26 @@ async def serve(q: Q):
         q.client.initialized = True
 
     output_value = q.user.event_catcher.catch(q)
-    if len(output_value) > 0:
-        q.page["details"].content = "\n".join([str(dic) for dic in output_value])
+    if len(output_value) == 0:
+        pass  # Nothing to catch, no user interaction
+    else:
+        for event_catched in output_value:
+            # event_catched is a dict which one single key: the event type
 
+            # Print it in console
+            print(f"Type of event catched: {list(event_catched.keys())[0]}")
+            print(f"Details of event: {list(event_catched.values())[0]}")
+
+        # Display it on screen
+        q.page["details"].content = "\n".join(
+            [
+                f"""
+Type of event catched: {list(event_catched.keys())[0]}\n
+Details of event: {list(event_catched.values())[0]}
+"""
+                for event_catched in output_value
+            ]
+        )
     await q.page.save()
 
 

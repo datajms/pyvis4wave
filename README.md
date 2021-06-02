@@ -2,6 +2,12 @@
 Bringing interactive network visualization to H2O wave web-apps
 
 
+## Install
+It is available from PyPI
+```
+pip install pyvis4wave
+```
+
 ## Quick Start
 
 In your H2O wave app, add a pyvis4wave component to:
@@ -60,7 +66,7 @@ In your wave app:
 
 ## Demo
 
-You can also run the demo locally:
+You can also run the demo locally (`demo_wave_network.py` in the `pyvis4wave` folder`):
 1. Run a wave server (≥ 0.16). See [wave docs](https://wave.h2o.ai/docs/installation) for installation,
 go through step 1 to 5 of these docs.
 2. Install this package (instructions coming soon) and run:
