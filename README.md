@@ -12,6 +12,7 @@ With a few lines of pure python (see [Quick Start](#quick-start) below), you can
 - Insert the event_catcher in your app, to catch the user-interactions.
 
 Here is how the [demo](#demo) renders:
+
 ![Demo of pyvis4wave](static/demo_pyvis4wave.gif)
 
 Currently, supported user interactions are (see event_catcher [code](https://github.com/datajms/pyvis4wave/blob/main/vis4wave/wave_events.py#L80-L158)):
