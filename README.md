@@ -2,6 +2,28 @@
 Bringing interactive network visualization to H2O wave web-apps
 
 
+## What will pyvis4wave do for me?
+
+pyvis4wave allows you, python data-scientist/developer, to take the best out of [H2O wave](https://wave.h2o.ai/) (a python webapp framework) interactivity, to **let the user interact with graph/network visualization**.
+It handles for you the bit of javascript and html configuration required to make it work, so that **you can focus what you do best**, getting interactive things working without handling html and js.
+With a few lines of pure python (see [Quick Start](#quick-start) below), you can:
+- Define your graph object (a [pyvis](https://github.com/WestHealth/pyvis) object with pyvis syntax), where a [lot of customization](https://pyvis.readthedocs.io/en/latest/tutorial.html#visualization) is possible
+- Initialize your UiVis4Wave object to get a *back-end* event_catcher and a *front-end* ui wave card.
+- Insert the event_catcher in your app, to catch the user-interactions.
+
+Here is how the [demo](#demo) renders:
+![Demo of pyvis4wave](static/demo_pyvis4wave.gif)
+
+Currently, supported user interactions are (see event_catcher [code](https://github.com/datajms/pyvis4wave/blob/main/vis4wave/wave_events.py#L80-L158)):
+- hovering of a node or an edge: returns id of object
+- click on a node or an edge: returns id of object
+- double click on a node or an edge: returns id of object
+- user adds a new node: creates and returns the new id
+- user adds a new edge: creates and returns the new id, + its 2 nodes id
+- user deletes a node or an edge: returns id of delete objects
+- zoom in or zoom out
+
+
 ## Install
 It is available from PyPI
 ```
@@ -72,3 +94,10 @@ go through step 1 to 5 of these docs.
 2. Install this package (instructions coming soon) and run:
 ```wave run vis4wave/demo_wave_network.py```
 3. Go to your browser: ```http://localhost:10101/demo```
+
+
+## Contribute
+
+Help wanted on these items:
+- Make the Edit menu more beautiful: currently the Edit menu (top-left of the plot) is not as beautiful as in the pure visjs library (see it [here](https://visjs.github.io/vis-network/examples/network/other/manipulationEditEdgeNoDrag.html)).
+What it is needed is to deepdive in html and css code and make changes accordingly.
