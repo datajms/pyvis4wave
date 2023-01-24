@@ -40,15 +40,13 @@ setup(
     description="Bring interactive network visualization to H2O wave web-apps",
     author="Jean-Matthieu Schertzer",
     packages=find_packages(exclude=["notebooks"]),
-    # package_data={
-    #     "vis4wave": [
-    #         "data/*.zip",
-    #         "images/*.png",
-    #         "static/*/*.css",
-    #         "static/*/*.js",
-    #         "static/*/*.html",
-    #     ]
-    # },
+    include_package_data=True,
+    package_data={
+        "": [
+            "*.js",
+            "*.html",
+        ]
+    },
     install_requires=base_packages,
     extras_require={"docs": docs_packages, "dev": dev_packages, "test": test_packages},
     classifiers=[

@@ -88,7 +88,6 @@ It should be the same string as in vis4wave.WaveNetwork.return_html(wave_name)""
 
         if q.events[self.wave_name]:
             if q.events[self.wave_name].params:
-
                 incoming_event_params = q.events[self.wave_name].params
 
                 if incoming_event_params["event"] in ["add__node", "add__edge"]:
